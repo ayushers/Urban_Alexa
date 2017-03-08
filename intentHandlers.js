@@ -1,6 +1,5 @@
 'use strict';
 var textHelper = require('./textHelper'),
-    storage = require('./storage'),
     https = require('https');
 
 function getJsonEvents(eventCallback, word) {
@@ -29,7 +28,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
 
     intentHandlers.WordDefIntent = function (intent, session, response) {
         var wordToDefine = intent.slots.Word.value;
-        var speechOutput = ''
+        var speechOutput = '';
         console.log(wordToDefine);
 
         getJsonEvents( function (events) {
@@ -42,19 +41,19 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
                 }
                 else{
                     speechOutput = 'Word was not recognized'
-                    _def1 = 'Undefined Error'
                 }
 
-                response.tellWithCard(speechOutput, wordToDefine, _def1);
+                response.ask(speechOutput + textHelper.nextHelp, textHelper.nextHelp);
+                return;
+                
             }, wordToDefine);
     }
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
-        var speechOutput = textHelper.completeHelp;
         if (skillContext.needMoreHelp) {
-            response.ask(textHelper.completeHelp + ' So, how can I help?', 'How can I help?');
+            response.ask(textHelper.completeHelp + textHelper.nextHelp, textHelper.nextHelp);
         } else {
-            response.tell(textHelper.completeHelp);
+            response.tell(textHelper.nextHelp);
         }
     };
 
