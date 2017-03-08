@@ -15,7 +15,7 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
             var speechOutput = '',
                 reprompt;
             
-                speechOutput += 'Welcome to Urban Dictionary, I can define common words asked about!';
+                speechOutput += 'Welcome to Urban Dictionary, I can define commonly asked words and phrases';
                 reprompt = "What word or phrase do you want to learn about?";
                 // reprompt = textHelper.completeHelp;
                 // reprompt = textHelper.nextHelp;
