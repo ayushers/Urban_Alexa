@@ -1,5 +1,5 @@
 # Urban_Alexa
-# Created by Ayush Agrawal
+# Created by Ayush A
 
 This is a new Alexa Skill that allows users to interface their Amazon Echo with the Urban Dictionary.
 
